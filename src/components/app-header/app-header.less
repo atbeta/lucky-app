@@ -1,0 +1,38 @@
+.app-header-container {
+  display: flex;
+  flex-direction: column;
+
+  .header-row {
+    margin-bottom: 1rem;
+    align-items: center;
+    .header-row-item {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+      &:nth-child(n+3) {
+        min-width: 16rem;
+      }
+
+      .row-item-label {
+        flex: 0 0 4rem;
+      }
+    }
+  }
+
+   .top-right-button {
+     position: absolute;
+     top: 1rem;
+     right: 1.5rem;
+     svg {
+       cursor: pointer;
+     }
+   }
+
+  // ∏≤∏« ‰»ÎøÚ—˘ Ω
+  .t-input__wrap {
+    max-width: 120px;
+    input {
+      text-align: center;
+    }
+  }
+}

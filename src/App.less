@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: .5rem;
+  background: fade(#B5C0D0, 50);
+
+  .app-header {
+    flex: 0 0 100px;
+  }
+
+  .lottery-config {
+     border-radius: .5rem;
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+     padding: .5rem;
+     margin-bottom: .5rem;
+     background: #fff;
+  }
+
+  .main-area {
+    flex: 1;
+    display: flex;
+    border-radius: .5rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: .5rem;
+    background: #fff;
+
+
+    .candidate-management {
+      flex: 0 0 20%;
+    }
+
+    .lottery-area {
+      flex: 1;
+    }
+
+    .lottery-result {
+      flex: 0 0 25%;
+    }
+  }
+}

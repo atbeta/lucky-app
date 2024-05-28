@@ -20,7 +20,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "com.beta.lucky",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -36,9 +36,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "lucky-app",
-        "width": 800,
-        "height": 600
+        "title": "抽奖助手",
+        "width": 960,
+        "height": 720
       }
     ]
   }
