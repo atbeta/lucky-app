@@ -131,10 +131,10 @@ const LuckPicker = props => {
 
   if (finish) {
     return (<div className="luck-picker-container">
-      <div className="luck-picker-finish">本轮抽签结束</div>
+      <div className="luck-picker-finish">本次抽签结束</div>
       <div className="luck-picker-winner">恭喜幸运儿：{calcFinalResult()}</div>
       <div className="luck-picker-button">
-        <Button onClick={() => resetPicker()}>再来一次</Button>
+        <Button size="large" onClick={() => resetPicker()}>再来一次</Button>
       </div>
     </div>)
   }
@@ -142,7 +142,7 @@ const LuckPicker = props => {
   return (
     <div className="luck-picker-container">
       <div className="luck-picker-status">
-        <span>共{totalRound}轮，当前为第{currentRound + 1}轮，晋级{pickNumberByRound[currentRound]}人，已选{currentPickList.length}人</span>
+        <span>共 {totalRound} 轮，当前为第 {currentRound + 1} 轮，晋级 {pickNumberByRound[currentRound]} 人，已选 {currentPickList.length} 人</span>
       </div>
       <div className="luck-picker-name">
         {calcShowName()}
