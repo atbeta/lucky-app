@@ -62,8 +62,6 @@ const LuckPicker = props => {
     config.playSound && audioRef.current?.play();
     let len;
     if (currentPickList.length === pickNumberByRound[currentRound]) {
-      // 进入下一轮
-      console.log(`第${currentRound}轮结束`, '选择结果为: ', currentPickList.toString())
       setCurrentRound(currentRound + 1);
       setCurrentList(currentPickList);
       setCurrentPickList([]);
@@ -152,8 +150,8 @@ const LuckPicker = props => {
       <div className="luck-picker-button">
         {
           picking ?
-            (<Button onClick={handlePickStop}>停止</Button>) :
-            (<Button disabled={finish || candidates.length === 0} onClick={handlePickStart}>开始</Button>)
+            (<Button size="large" onClick={handlePickStop}>停止</Button>) :
+            (<Button size="large" disabled={finish || candidates.length === 0} onClick={handlePickStart}>开始</Button>)
         }
       </div>
     </div>

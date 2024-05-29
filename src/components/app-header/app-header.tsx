@@ -5,7 +5,6 @@ import './app-header.less';
 
 const AppHeader = props => {
   const { config, setConfig } = props;
-  console.log(config);
 
   const onModeChange = mode => {
     if (mode === 'normal') {
@@ -26,9 +25,11 @@ const AppHeader = props => {
   }
 
   const handlePickChange = v => {
+    // pick 输出值限制为以,或空格分割的数字，且要求左侧数字要大于右侧数字
+    const _pick = v.replace(/[^0-9, ]/g, '');
     setConfig({
       ...config,
-      pick: v,
+      pick: _pick,
     })
   }
 
@@ -54,7 +55,6 @@ const AppHeader = props => {
   }
 
   const handleSoundSwitch = v => {
-    console.log(v);
     setConfig({
       ...config,
       playSound: v,

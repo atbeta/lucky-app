@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { List, Link, Space } from 'tdesign-react';
+import { List, Space, Popup  } from 'tdesign-react';
+import { Icon } from 'tdesign-icons-react';
 import './candidate-management.less';
 
 const { ListItem } = List;
@@ -29,7 +30,13 @@ const CandidateManagement = props => {
         fullCandidates.map((candidate: string, index: number) => (
           <ListItem key={index} action={
             <Space>
-              <Link theme="primary" hover="color" onClick={() => handleExclude(candidate)}>{exclude.get(candidate) ? '加入' : '排除'}</Link>
+              {exclude.get(candidate) ?
+                (<Popup trigger="hover" showArrow content="点击加入" placement="right-top">
+                  <Icon size="1rem" name="user-checked" style={{ color: '#999', cursor: 'pointer' }} onClick={() => handleExclude(candidate)} />
+                </Popup>) :
+                (<Popup trigger="hover" showArrow content="点击排除" placement="right-top">
+                  <Icon name="user-blocked" size="1rem" style={{ cursor: 'pointer' }} onClick={() => handleExclude(candidate)} />
+                </Popup>)}
             </Space>
           }><span className={exclude.get(candidate) ? 'deleted-item' : ''}>{candidate}</span></ListItem>
         ))

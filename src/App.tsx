@@ -18,15 +18,17 @@ export interface ILotteryConfig {
 function App () {
   const [candidates, setCandidates] = useState<string[]>([]);
   const [fullCandidates, setFullCandidates] = useState<string[]>([]);
-  const [lotteryConfig, setLotteryConfig] = useState<ILotteryConfig>({
-    mode: 'knockout',
-    round: 3,
-    pick: '5,3,1',
-    speed: 100,
-    keepOrder: true,
-    playSound: true,
-  });
+  const [lotteryConfig, setLotteryConfig] = useState<ILotteryConfig>();
   const [lotteryResult, setLotteryResult] = useState<string[]>([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    invoke('read_or_create_config')
+      .then(res => {
+        setLotteryConfig(JSON.parse(res as string));
+        setLoaded(true)
+      })
+  }, []);
 
   useEffect(() => {
     invoke('read_candidates')
@@ -47,10 +49,25 @@ function App () {
     setLotteryResult(result);
   }
 
+  const handleConfigChange = (config: ILotteryConfig) => {
+    setLotteryConfig(config);
+    invoke('save_config', { config: JSON.stringify(config) })
+      .then(res => {
+        console.log('Save config successfully.');
+      })
+      .catch(e => {
+        console.error('Failed to save config:', e);
+      })
+  };
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <div className="container">
       <div className="lottery-config">
-        <AppHeader config={lotteryConfig} setConfig={setLotteryConfig}/>
+        <AppHeader config={lotteryConfig} setConfig={handleConfigChange}/>
       </div>
       <div className="main-area">
         <div className="candidate-management">
